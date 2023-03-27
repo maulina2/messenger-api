@@ -7,6 +7,7 @@ import ru.tsu.hits.messengerapi.enumeration.Sex;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -19,7 +20,7 @@ public class UserDto {
 
     private String name;
 
-    private Date birthDate;
+    private LocalDate birthDate;
 
     private Date creationDate;
 

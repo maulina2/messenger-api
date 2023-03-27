@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,7 +13,7 @@ public class EditUserInfoDto {
 
     private String name;
 
-    private Date birthDate;
+    private LocalDate birthDate;
 
     private String surname;
 

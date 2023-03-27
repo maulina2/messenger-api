@@ -2,8 +2,8 @@ create table public._user
 (
     id            uuid not null
         primary key,
-    birth_date    timestamp,
-    creation_date timestamp,
+    birth_date    date,
+    creation_date date,
     login         varchar(255),
     name          varchar(255),
     password      varchar(255),

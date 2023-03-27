@@ -41,7 +41,7 @@ public class UserService {
         return userRepository
                 .findById(id)
                 .orElseThrow(() -> {
-                    throw new NotFoundException("Не авторизован.");
+                    throw new NotFoundException("Такой пользователь не найден.");
                 });
     }
 }

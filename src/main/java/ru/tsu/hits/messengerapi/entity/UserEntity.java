@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import ru.tsu.hits.messengerapi.enumeration.Sex;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -28,8 +29,9 @@ public class UserEntity {
 
     private String name;
 
-    private Date birthDate;
+    private LocalDate birthDate;
 
+    @Temporal(TemporalType.DATE)
     private Date creationDate;
 
     private String surname;
