@@ -7,7 +7,7 @@ import ru.tsu.hits.messengerapi.enumeration.Sex;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import java.util.Date;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,9 +17,7 @@ public class SignUpDto {
 
     private String name;
 
-    private Date birthDate;
-
-    private Date creationDate;
+    private LocalDate birthDate;
 
     private String surname;
 
