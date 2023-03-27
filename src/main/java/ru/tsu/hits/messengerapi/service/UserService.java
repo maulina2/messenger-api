@@ -24,7 +24,7 @@ public class UserService {
         return userMapper.userToUserDto(user);
     }
 
-    public UserDto updateUserInfo(UUID id, EditUserInfoDto editUserInfoDto) {
+    public UserDto editUserInfo(UUID id, EditUserInfoDto editUserInfoDto) {
         UserEntity user = getUserById(id);
 
         user.setBirthDate(editUserInfoDto.getBirthDate());

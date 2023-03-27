@@ -20,7 +20,7 @@ import javax.validation.Valid;
 public class SignUpController {
     private final SignUpService signUpService;
 
-    @Operation(summary = "Регистрация пользователя.")
+    @Operation(summary = "Зарегистрировать пользователя.")
     @PostMapping("/sign-up")
     public UserDto userSignUp(@Valid @RequestBody SignUpDto signUpDto) {
         return signUpService.userSignUp(signUpDto);

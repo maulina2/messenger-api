@@ -1,7 +1,6 @@
 package ru.tsu.hits.messengerapi.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -29,10 +28,9 @@ public class UserController {
 
     @Operation(summary = "Изменить информацию о пользователе.")
     @PutMapping("/{id}")
-    UserDto editUserInfo(@RequestBody @PathVariable("id") UUID id,
-                         EditUserInfoDto editUserInfoDto) {
+    UserDto editUserInfo(@PathVariable("id") UUID id, @RequestBody EditUserInfoDto editUserInfoDto) {
 
-        return userService.updateUserInfo(id, editUserInfoDto);
+        return userService.editUserInfo(id, editUserInfoDto);
     }
 }
 
