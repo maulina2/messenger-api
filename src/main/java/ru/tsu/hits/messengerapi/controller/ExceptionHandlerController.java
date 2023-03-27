@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import ru.tsu.hits.messengerapi.dto.ApiError;
+import ru.tsu.hits.messengerapi.exception.ConflictException;
 import ru.tsu.hits.messengerapi.exception.NotFoundException;
 
 import java.util.ArrayList;
@@ -79,5 +80,15 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(new ApiError(exception.getMessage()), HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Метод для отлавливания всех {@link ConflictException}.
+     *
+     * @param exception исключение.
+     * @return объект класса {@link ApiError} со статус кодом 409.
+     */
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<ApiError> handleConflictException(ConflictException exception) {
+        return new ResponseEntity<>(new ApiError(exception.getMessage()), HttpStatus.CONFLICT);
+    }
 
 }
