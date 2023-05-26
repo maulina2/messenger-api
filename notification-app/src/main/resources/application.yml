@@ -1,0 +1,38 @@
+server:
+  port: 8094
+
+app:
+  name: notification-app
+  security:
+    jwt-token:
+      root-path: /api
+      permit-all:
+      secret: qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+      expiration: 900000
+    integration:
+      root-path: /integration
+      api-key: secret-api-key
+
+spring:
+  flyway:
+    locations: classpath:migrations
+    url: jdbc:postgresql://localhost:5433/notification-db
+    user: postgres
+    password: postgres
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/notification-db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: rmq-user
+    password: rmq-pass
+  cloud.stream.bindings:
+    createNotification-in-0:
+      destination: CREATE_NOTIFICATION

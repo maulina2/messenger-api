@@ -1,0 +1,44 @@
+server:
+  port: 8191
+
+app:
+  name: user-app
+  security:
+    jwt-token:
+      root-path: /api
+      permit-all:
+        - /api/v1/users/sign-in
+        - /api/v1/users/sign-up
+      secret: qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+      expiration: 900000
+    integration:
+      root-path: /integration
+      api-key: secret-api-key
+
+spring:
+  flyway:
+    locations: classpath:migrations
+    url: jdbc:postgresql://localhost:5433/users-db
+    user: postgres
+    password: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5433/users-db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: rmq-user
+    password: rmq-pass
+  cloud.stream.bindings:
+    synchronizeUserInfo-out-0:
+      destination: SYNCHRONIZE_PERSON_DETAILS
+    createNotification-out-0:
+      destination: CREATE_NOTIFICATION

@@ -1,0 +1,29 @@
+server:
+  port: 8192
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-app
+          uri: http://localhost:8191/
+          predicates:
+            - Path=/api/v1/users/*
+        - id: friends-app
+          uri: http://localhost:8010/
+          predicates:
+            - Path=/api/v1/friends/**
+        - id: chat-app
+          uri: http://localhost:8013/
+          predicates:
+            - Path=/api/v1/chat/**
+        - id: notification-app
+          uri: http://localhost:8094/
+          predicates:
+            - Path=/api/v1/notification/*
+        - id: file-storage-app
+          uri: http://localhost:8085/
+          predicates:
+            - Path=/api/v1/file-storage/*
+
+

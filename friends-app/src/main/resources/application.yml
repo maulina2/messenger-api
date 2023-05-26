@@ -1,0 +1,39 @@
+server:
+  port: 8010
+
+app:
+  name: friends-app
+  security:
+    jwt-token:
+      root-path: /api
+      permit-all:
+      secret: qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+      expiration: 900000
+    integration:
+      root-path: /integration
+      api-key: secret-api-key
+
+spring:
+  flyway:
+    locations: classpath:migrations
+    url: jdbc:postgresql://localhost:5433/friends-db
+    user: postgres
+    password: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5433/friends-db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: rmq-user
+    password: rmq-pass
+  cloud.stream.bindings:
+    synchronizeUserInfo-in-0:
+      destination: SYNCHRONIZE_PERSON_DETAILS
+    createNotification-out-0:
+      destination: CREATE_NOTIFICATION

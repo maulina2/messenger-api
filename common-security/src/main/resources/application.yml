@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+app:
+  name: common-security
+  security:
+    jwt-token:
+      root-path: /api
+      permit-all:
+        - /api/test1
+        - /api/test2
+      secret: qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+      expiration: 900000
+    integration:
+      root-path: /integration
+      api-key: secret-api-key

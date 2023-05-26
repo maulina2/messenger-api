@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  database:
+    container_name: friends-db
+    image: postgres:alpine
+    ports:
+      - '5402:5433'
+    environment:
+      - POSTGRES_DB=friends-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres

@@ -1,0 +1,46 @@
+server:
+  port: 8085
+
+minio:
+  access-key: eR0TJqoaMl6b6l3M
+  secret-key: eo9nv10a0ubepqRLyjFQeUMaWDXvfi0W
+  bucket: messenger-file-storage
+  url: http://localhost:9900
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+  datasource:
+    url: jdbc:postgresql://localhost:5433/file-storage-db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    locations: classpath:migrations
+    enabled: true
+
+app:
+  name: file-storage-app
+  security:
+    jwt-token:
+      root-path: /api
+      permit-all:
+      secret: qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+      expiration: 900000
+    integration:
+      root-path: /integration
+      api-key: secret-api-key
+  logging-requests:
+    include-client-info: true
+    include-query-string: true
+    include-payload: true
+    include-headers: true
+    max-payload-length: 1000

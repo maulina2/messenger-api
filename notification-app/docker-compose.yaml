@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  database:
+    container_name: notification-db
+    image: postgres:alpine
+    ports:
+      - '5401:5433'
+    environment:
+      - POSTGRES_DB=notification-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres

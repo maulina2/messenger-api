@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  database:
+    container_name: chat-db
+    image: postgres:alpine
+    ports:
+      - '5403:5433'
+    environment:
+      - POSTGRES_DB=chat-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
